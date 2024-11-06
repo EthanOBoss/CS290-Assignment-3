@@ -1,8 +1,171 @@
-/*
- * CSS for the main Benny's List site will be provided after the extension
- * deadline for the previous assignment.  Alternatively, you can paste your
- * own CSS here.
- */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #f67811;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+header a {
+  color: #fff;
+}
+
+.site-title {
+  font-family: "Roboto Slab", serif;
+  font-size: 80px;
+  font-weight: 100;
+  margin: 0 0 0 20px;
+  padding-top: 30px;
+}
+
+.site-title a:hover {
+  text-decoration: none;
+}
+
+.content {
+  display: flex;
+}
+
+.filter-container {
+  min-width: 200px;
+  max-width: 200px;
+  margin: 10px 10px auto 10px;
+  padding: 20px;
+  border-radius: 3px;
+  background-color: #efefef;
+}
+
+.filter-container h2 {
+  margin: 0;
+}
+
+.filter-input-container {
+  width: 100%;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+}
+
+.filter-input-element {
+  margin: 0 5px;
+  flex: 1 1 100%;
+}
+
+.filter-input {
+  font-size: 14px;
+  width: 100%;
+  margin-left: 10px;
+  padding: 3px;
+  border: 1px solid #dadada;
+  border-radius: 3px;
+}
+
+.filter-fieldset {
+  flex: 1 100%;
+  border: 1px solid #ababab;
+}
+
+.action-button {
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+  background-color: #000;
+  border: 1px solid #ababab;
+  border-radius: 5px;
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #f9d2b2;
+  border-color: #333;
+  color: #333;
+}
+
+#filter-update-button {
+  width: 100%;
+}
+
+.post {
+  display: inline-block;
+  vertical-align: top;
+  height: 300px;
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #dadada;
+  border-radius: 3px;
+}
+
+.post-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.post-image-container img {
+  max-height: 240px;
+  max-width: 300px;
+}
+
+.post-info-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.post-price {
+  display: inline-block;
+  font-size: 80%;
+  padding: 3px;
+  margin: 3px 5px;
+  border: 1px solid #ababab;
+  border-radius: 3px;
+  background: #efefef;
+}
+
+#sell-something-button {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  height: 60px;
+  width: 60px;
+  border: none;
+  border-radius: 30px;
+  font-size: 36px;
+  background-color: #f67811;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+#sell-something-button:hover,
+#sell-something-button:focus {
+  right: 27px;
+  bottom: 27px;
+  height: 66px;
+  width: 66px;
+  border-radius: 33px;
+  font-size: 40px;
+}
+
+#sell-something-button:focus {
+  outline: none;
+}
 
 /*
  * CSS for the modal dialog used to collect info from the user about a new post
