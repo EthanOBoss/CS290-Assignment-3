@@ -52,7 +52,7 @@ function closeSellModal()
 }
 
 /*Function that creates a post using the Sell Something modal*/
-function CreatePostButton()
+function createPostButton()
 {
   if(checkAlert() == true)
   {
