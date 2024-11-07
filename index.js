@@ -77,3 +77,59 @@ function checkAlert()
     return false;
   }
 }
+
+/*Function that finds the new post condition and checks it*/
+function getCondition()
+{
+  for(var i = 0; i < condition.length, i++)
+      {
+        if(condition[i].checked == true)
+        {
+          return condition[i].value;
+        }
+      }
+}
+
+/*Function that calls prior functions to create a post on the main page*/
+function createNewPost(itemDescription, photoURL, sellingPrice, city, condition)
+{
+  var postDiv = document.createElement('div');
+  postDiv.classList.add('post');
+  postDiv.setAttribute('data-price', sellingPrice);
+  poatDiv.setAttribute('data-city', city);
+  postDiv.setAttribute('data-condition', condition);
+
+  var postContentsDiv = document.createElement('div');
+  postContentsDiv.classList.add('post-contents');
+  postDiv.appendChild(postContentsDiv);
+
+  var postImageContainerDiv = document.createElement('div');
+  postImageContainerDiv.classList.add('post-image-container');
+  postContentsDiv.appendChild(postImageContainerDiv);
+
+  var imageImg = document.createElement('img');
+  imageImg.src = photoURL;
+  postImageContainerDiv.appendChild(imageImg);
+
+  var postInfoContainerDiv = document.createElement('div');
+  postInfoContainerDiv.classList.add('post-info-container');
+  postContentsDiv.appendChild(postInfoContainerDiv);
+
+  var linkA = document.createElement('a');
+  linkA.classList.add('post-title');
+  linkA.href = "#";
+  linkA.textContent = itemDescription;
+  postInfoContainerDiv.appendChild(linkA);
+
+  var postPriceSpan = document.createElement('span');
+  postPriceSpan.classList.add('post-price');
+  postPriceSpan.textContent = "$" + sellingPrice;
+  postInfoContainerDiv.appendChild(postPriceSpan);
+
+  var postCitySpan = document.createElement('span');
+  postCitySpan.classList.add('post-city');
+  postCitySpan.textContent = "(" + city + ")";
+  postInfoContainerDiv.appendChild(postCitySpan);
+
+  posts.appendChild(postDiv);
+}
