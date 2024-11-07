@@ -64,3 +64,16 @@ function createPostButton()
     closeSellModal();
   }
 }
+
+/*Function that makes sure all Sell Something Modal fields are filled in*/
+function checkAlert()
+{
+  if(itemDescription.value == "" || photoURL.value == "" || sellingPrice.value == "" || city.value =="")
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
