@@ -1,26 +1,25 @@
-// Event listeners for opening and closing the modal
+/*Listeners that control the opening, closing, and posting of the Sell Something Modal*/
 document.getElementById('sell-something-button').addEventListener('click', openModal);
 document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('modal-cancel').addEventListener('click', closeModal);
-
-// Event listener for the "Create Post" button
 document.getElementById('modal-accept').addEventListener('click', createPost);
 
-// Event listener for the "Update" button to apply filters
+/*Listener that controls the Update Filters button*/
 document.getElementById('filter-update-button').addEventListener('click', applyFilters);
 
-// Open the modal
-function openModal() {
+/*Function that unhides the Sell Something Modal*/
+function openModal() 
+{
   document.getElementById('sell-something-modal').classList.remove('hidden');
   document.getElementById('modal-backdrop').classList.remove('hidden');
 }
 
-// Close the modal
-function closeModal() {
+/*Function that closes the Sell Something Modal and sets all its values to nothing*/
+function closeModal() 
+{
   document.getElementById('sell-something-modal').classList.add('hidden');
   document.getElementById('modal-backdrop').classList.add('hidden');
 
-  // Clear input fields when modal is closed
   document.getElementById('post-text-input').value = '';
   document.getElementById('post-photo-input').value = '';
   document.getElementById('post-price-input').value = '';
@@ -28,21 +27,21 @@ function closeModal() {
   document.querySelector('input[name="post-condition"]:checked').checked = false;
 }
 
-// Create a new post
-function createPost() {
-  const description = document.getElementById('post-text-input').value.trim();
-  const photoURL = document.getElementById('post-photo-input').value.trim();
-  const price = document.getElementById('post-price-input').value.trim();
-  const city = document.getElementById('post-city-input').value.trim();
+/*Function that creates a post using the Sell Something Modal. (Creates a new post value, populates it, posts the post, then clears the modal and closes it)*/
+function createPost() 
+{
+  const description = document.getElementById('post-text-input').value;
+  const photoURL = document.getElementById('post-photo-input').value;
+  const price = document.getElementById('post-price-input').value;
+  const city = document.getElementById('post-city-input').value;
   const condition = document.querySelector('input[name="post-condition"]:checked')?.value;
+  
+  if (!description || !photoURL || !price || !city || !condition) 
+    {
+      alert('Uh Oh! A field has been left blank. Please fill in all fields.');
+      return;
+    }
 
-  // Validate input fields
-  if (!description || !photoURL || !price || !city || !condition) {
-    alert('Please fill in all fields before submitting.');
-    return;
-  }
-
-  // Create the new post element
   const postContainer = document.createElement('div');
   postContainer.classList.add('post');
   postContainer.setAttribute('data-price', price);
@@ -62,25 +61,24 @@ function createPost() {
     </div>
   `;
 
-  // Add the new post to the DOM
   document.querySelector('#posts').appendChild(postContainer);
 
-  // Close the modal after creating the post
   closeModal();
 }
 
-// Apply filters to the posts
-function applyFilters() {
+/*Function that shows or hides posts based on filter criteria inputted by the user*/
+function applyFilters() 
+{
   const filterText = document.getElementById('filter-text').value.toLowerCase();
   const filterMinPrice = parseFloat(document.getElementById('filter-min-price').value) || -Infinity;
   const filterMaxPrice = parseFloat(document.getElementById('filter-max-price').value) || Infinity;
   const filterCity = document.getElementById('filter-city').value.toLowerCase();
   const selectedConditions = Array.from(document.querySelectorAll('input[name="filter-condition"]:checked')).map(input => input.value);
 
-  // Get all posts
   const posts = document.querySelectorAll('.post');
 
-  posts.forEach(post => {
+  posts.forEach(post => 
+  {
     const postDescription = post.querySelector('.post-title').textContent.toLowerCase();
     const postPrice = parseFloat(post.getAttribute('data-price'));
     const postCity = post.getAttribute('data-city').toLowerCase();
@@ -91,11 +89,12 @@ function applyFilters() {
     const matchesCity = filterCity === '' || postCity === filterCity;
     const matchesCondition = selectedConditions.length === 0 || selectedConditions.includes(postCondition);
 
-    // Show or hide the post based on the filter criteria
-    if (matchesText && matchesPrice && matchesCity && matchesCondition) {
-      post.style.display = 'inline-block'; // Show the post
-    } else {
-      post.style.display = 'none'; // Hide the post
+    if (matchesText && matchesPrice && matchesCity && matchesCondition) 
+    {
+      post.style.display = 'inline-block';
+    } else 
+    {
+      post.style.display = 'none';
     }
   });
 }
